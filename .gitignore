@@ -1,0 +1,9 @@
+/_html
+*.html
+/My Notes
+_ankify
+/venv
+/dist
+/build
+/.vscode
+/__pycache__
