@@ -1,5 +1,6 @@
 import os
 import glob2
+import datetime
 from pathlib import Path
 from bs4 import BeautifulSoup
 from jinja2 import Environment, FileSystemLoader
@@ -9,6 +10,7 @@ from jinja2 import Environment, FileSystemLoader
 PATH = os.path.dirname(os.path.abspath(__file__))
 os.chdir(PATH)
 ANKI_PATH = os.path.join(Path.home(), 'Library', 'Application Support', 'Anki2', 'User 1', 'collection.media')
+current_time = str(datetime.datetime.now().date()) + '_' + str(datetime.datetime.now().time()).replace(':', '.') + '_'    
 
 def makefolder():
     '''makes html folder'''
@@ -33,12 +35,15 @@ def create_import(soup):
     for img in soup.body.find_all('img'):
         img_urls = img['src']
         img_urls = img_urls.split('/')[-1]
+        img_urls = current_time + img_urls
         img['src'] = img_urls
+        # print(img['src'])
 
     final = soup.body
     final = str(final)
     final = final.replace('<div>{', '\n')
     final = final.replace('}</div>', '~')
+    final = final.replace('\n', '', 1)
     
     return final
 
@@ -72,7 +77,8 @@ def move_images():
     imgs.extend(glob2.glob('**/*.tiff'))
     for img in imgs:
         img_folder, img_name = os.path.split(img) 
-        dest = os.path.join(ANKI_PATH, img_name)
+        img_name, img_ext = os.path.splitext(img_name) 
+        dest = os.path.join(ANKI_PATH, current_time+ img_name + img_ext)
         os.rename(img, dest)
         # print(img, dest)
 
