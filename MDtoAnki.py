@@ -1,13 +1,15 @@
 import re
 import os
+import datetime
 from pathlib import Path
 import glob2
-import mistune  
+import mistune
 
 PATH = os.path.dirname(os.path.abspath(__file__))
 os.chdir(PATH)
 ANKI_PATH = os.path.join(Path.home(), 'Library', 'Application Support', 'Anki2', 'User 1', 'collection.media')
-    
+current_time = str(datetime.datetime.now().date()) + '_' + str(datetime.datetime.now().time()).replace(':', '.') + '_'    
+
 class simple(mistune.Renderer):
     '''generates simple and reverse cards using link as divider'''
 
@@ -16,8 +18,9 @@ class simple(mistune.Renderer):
 
     def image(self, src, title, alt_text):
         src = src.split('/')
+        src = current_time + src[1]
         # print(src)
-        return f"<br><img src='{src[1]}' alt='{alt_text}' /><br>"
+        return f"<br><img src='{src}' alt='{alt_text}' /><br>"
 
     # def link(self, link, title, content):
     #     return f'`{link}~\n'
@@ -33,9 +36,11 @@ def singlecard(md_file):
     text = open(md_file, encoding='utf-8').read()
     html = md.render(text)
     html = html.replace('\n', '')
-    html = html.replace('{{', '\n')
-    html = html.replace('}}', '~')
+    # html = html.replace('<p>', '\n<p>')
+    html = html.replace('{', '\n')
+    html = html.replace('}', '~')
     html = html.replace('<p>\n', '', 1)
+    # html = html.replace('\n', '', 1)
     html = html.replace('images/', '')
     return html
 
@@ -70,11 +75,15 @@ def move_images():
 
     imgs = glob2.glob('**/*.jpg')
     imgs.extend(glob2.glob('**/*.png'))
+    imgs.extend(glob2.glob('**/*.jpeg'))
+    imgs.extend(glob2.glob('**/*.gif'))
     for img in imgs:
-        img_folder, img_name = os.path.split(img) 
-        dest = os.path.join(ANKI_PATH, img_name)
+        img_folder, img_name = os.path.split(img)
+        img_name, img_ext = os.path.splitext(img_name) 
+        dest = os.path.join(ANKI_PATH, current_time+ img_name + img_ext)
         os.rename(img, dest)
         # print(img, dest)
+
 
 def deleteline():
     '''deletes first line'''
