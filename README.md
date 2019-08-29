@@ -23,7 +23,9 @@ Note should look like this:
 
 ![1567041974835](image/1567041974835.png)
 
-where {} contains front of card and what follows is back of card. If there's a section you don't want to be included, you can use {ignore} as the front of the card. Make sure the front of the card has a unique question, otherwise anki will overwrite duplicates. You can include anything in the back of the card include images. 
+where {} contains front of card and what follows is back of card. If there's a section you don't want to be included, you can use {ignore} as the front of the card. Make sure the front of the card has a unique question, otherwise anki will overwrite duplicates. You can include anything in the back of the card include images:
+
+![1567043307493](image/1567043307493.png)
 
 Do not use ~ anywhere in the note, as it interferes with the import process. Also, do not use {} in the back of the note. The MDtoANKI script will ignore headings in markdown files. Lastly, the very first thing in your note needs to be a card so that anki can read the html file properly. Sometimes I just put a {ignore} at the very beginning so I don't forget.
 
