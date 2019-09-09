@@ -7,3 +7,12 @@ _ankify
 /build
 /.vscode
 /__pycache__
+/build
+/dist
+/mac/build
+/mac/dist
+/windows/build
+/windows/dist
+/ENtoANKI/build
+/ENtoANKI/dist
+*.spec
