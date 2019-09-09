@@ -39,13 +39,13 @@ def create_import(soup):
         img['src'] = img_urls
         # print(img['src'])
 
-    final = soup.body
-    final = str(final)
-    final = final.replace('<div>{', '\n')
-    final = final.replace('}</div>', '~')
-    final = final.replace('\n', '', 1)
+    html = soup.body
+    html = str(html)
+    html = html.replace('<div>{', '\n')
+    html = html.replace('}</div>', '~')
+    html = html.replace('\n', '', 1)
     
-    return final
+    return html
 
 def writefile(filename, html_content):
     '''writes html to file'''
@@ -63,8 +63,8 @@ def recursive():
         folder, filename = os.path.split(html_file)
         filename, ext = os.path.splitext(filename)
         html_file = os.path.join('_html', filename + '.html')
-        final = create_import(soup)
-        writefile(html_file, final)
+        html = create_import(soup)
+        writefile(html_file, html)
 
 
 def move_images():

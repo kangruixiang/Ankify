@@ -1,14 +1,21 @@
 import re
 import os
+import shutil
 import datetime
 from pathlib import Path
 import glob2
 import mistune
 
-PATH = os.path.dirname(os.path.abspath(__file__))
-os.chdir(PATH)
+# PATH = os.path.dirname(os.path.abspath(__file__))
+# path = 'D:\Git\Ankify'
+# os.chdir(PATH)
 ANKI_PATH = os.path.join(Path.home(), 'Library', 'Application Support', 'Anki2', 'User 1', 'collection.media')
+win_ANKI_PATH = os.path.join(Path.home(), 'AppData', 'Roaming', 'Anki2', 'User 1', 'collection.media')
 current_time = str(datetime.datetime.now().date()) + '_' + str(datetime.datetime.now().time()).replace(':', '.') + '_'    
+card_left = '{{'
+card_right = '}}'
+delimiter = '~'
+
 
 class simple(mistune.Renderer):
     '''generates simple and reverse cards using link as divider'''
@@ -37,8 +44,8 @@ def singlecard(md_file):
     html = md.render(text)
     html = html.replace('\n', '')
     # html = html.replace('<p>', '\n<p>')
-    html = html.replace('{', '\n')
-    html = html.replace('}', '~')
+    html = html.replace(f'{card_left}', '\n')
+    html = html.replace(f'{card_right}', f'{delimiter}')
     html = html.replace('<p>\n', '', 1)
     # html = html.replace('\n', '', 1)
     html = html.replace('images/', '')
@@ -46,8 +53,8 @@ def singlecard(md_file):
 
 def makefolder():
     '''makes html folder'''
-
-    if not os.path.exists("_html"):
+#     html_path = os.path.join(path, '_html')
+    if not os.path.exists('_html'):
         print("Making html folder")
         os.mkdir("_html")
 
@@ -67,7 +74,7 @@ def recursive():
         filename, ext = os.path.splitext(filename)
         html_file = os.path.join(folder, '_html', filename + '.html')
         html_content = singlecard(md_file)
-        # print(html_file, html_content)
+        print(html_file, html_content)
         writefile(html_file, html_content)
 
 def move_images():
@@ -80,8 +87,8 @@ def move_images():
     for img in imgs:
         img_folder, img_name = os.path.split(img)
         img_name, img_ext = os.path.splitext(img_name) 
-        dest = os.path.join(ANKI_PATH, current_time+ img_name + img_ext)
-        os.rename(img, dest)
+        dest = os.path.join(win_ANKI_PATH, current_time+ img_name + img_ext)
+        shutil.copy(img, dest)
         # print(img, dest)
 
 
@@ -96,7 +103,7 @@ def deleteline():
 
 def main():
     makefolder()
-    recursive()
+    recursive(path)
     move_images()
 
 if __name__ == '__main__':

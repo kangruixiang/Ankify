@@ -1,5 +1,5 @@
 
-{back pain alarming symptoms}
+{{back pain alarming symptoms}}
 
 - alarming symptoms:
   - bowel, bladder incontinence
@@ -8,7 +8,7 @@
 
 ## Workup
 
-{someone comes in with lower back pain, workup}
+{{someone comes in with lower back pain, workup}}
 
 Someone comes in with lower back pain:
 
