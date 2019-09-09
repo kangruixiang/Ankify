@@ -24,8 +24,9 @@ class simple(mistune.Renderer):
         return ''
 
     def image(self, src, title, alt_text):
-        src = src.split('/')
-        src = current_time + src[1]
+        if src.startswith('http') == False:
+            src = src.split('/')
+            src = current_time + src[1]
         # print(src)
         return f"<br><img src='{src}' alt='{alt_text}' /><br>"
 
