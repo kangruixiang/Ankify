@@ -3,7 +3,7 @@ typora-copy-images-to: image
 ---
 
 # Ankify
- Ankify notes into anki cards.
+Ankify notes into anki cards.
 
 # Installation
 
@@ -11,7 +11,7 @@ Works only for Mac as of now. Will add Windows version later.
 
 You must have python 3 installed.
 
-You have to install the required add ons for the script:
+You have to install ==the== required add ons for the script:
 
 `pip3 install -r requirements`
 
@@ -49,4 +49,4 @@ Result in Anki:
 
 ![1567042661564](image/1567042661564.png)
 
-I style my cards so they look different.
+I style my cards so they look ==different.==

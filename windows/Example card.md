@@ -1,7 +1,3 @@
----
-
----
-
 {{back pain alarming symptoms}}
 
 - alarming symptoms:
@@ -9,11 +5,13 @@
   - saddle anesthesia
   - any FND that's new or rapidly progressing
 
+![](images/test.jpeg)
+
 ## Workup
 
 {{someone comes in with lower back pain, workup}}
 
-Someone comes in with lower back pain:
+Someone comes in with ==lower== back pain:
 
 - if alarming symptoms, think **cord compression**:
   - Give IV steroids ASAP

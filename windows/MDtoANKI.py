@@ -1,24 +1,15 @@
-import re
-import os
-import shutil
-import datetime
-from pathlib import Path
+import re, os, shutil, datetime, copy
 import glob2
-import mistune
+from mistune import Renderer, InlineGrammar, InlineLexer, Markdown
+from preference import mac_ANKI_PATH, win_ANKI_PATH, card_left, card_right, delimiter
 
-# PATH = os.path.dirname(os.path.abspath(__file__))
-# path = 'D:\Git\Ankify'
-# os.chdir(PATH)
-ANKI_PATH = os.path.join(Path.home(), 'Library', 'Application Support', 'Anki2', 'User 1', 'collection.media')
-win_ANKI_PATH = os.path.join(Path.home(), 'AppData', 'Roaming', 'Anki2', 'User 1', 'collection.media')
+
+anki_path = win_ANKI_PATH
 current_time = str(datetime.datetime.now().date()) + '_' + str(datetime.datetime.now().time()).replace(':', '.') + '_'    
-card_left = '{{'
-card_right = '}}'
-delimiter = '~'
 
 
-class simple(mistune.Renderer):
-    '''generates simple and reverse cards using link as divider'''
+class simple(Renderer):
+    '''Renderer for Ankify'''
 
     def header(self, text, level, raw=None):
         return ''
@@ -30,31 +21,47 @@ class simple(mistune.Renderer):
         # print(src)
         return f"<br><img src='{src}' alt='{alt_text}' /><br>"
 
-    # def link(self, link, title, content):
-    #     return f'`{link}~\n'
-
     def newline(self):
         return ''
+
+    def highlights(self, alt, text):
+        '''generates hightlights into mark html'''
+
+        return f'{alt}<mark>{text}</mark>' 
+ 
+
+class HighlightsInlineLexer(InlineLexer):
+    '''class for highlights'''
+
+    def enable_highlights(self):
+        # add highlights rules
+        self.rules.highlights = re.compile(r'^([\s\S]+?)(==)([\s\S]+?)(==)')
+        self.default_rules.insert(1, 'highlights')
+
+    def output_highlights(self, m):
+        alt = m.group(1)
+        text = m.group(3)
+        return self.renderer.highlights(alt, text)
+
 
 def singlecard(md_file):
     '''converts single md file'''
 
     renderer = simple() #Picks which generator to use, cloze or simple
-    md = mistune.Markdown(renderer=renderer)
+    inline = HighlightsInlineLexer(renderer)
+    inline.enable_highlights()
+    md = Markdown(renderer=renderer, inline=inline)
     text = open(md_file, encoding='utf-8').read()
     html = md.render(text)
     html = html.replace('\n', '')
-    # html = html.replace('<p>', '\n<p>')
     html = html.replace(f'{card_left}', '\n')
     html = html.replace(f'{card_right}', f'{delimiter}')
     html = html.replace('<p>\n', '', 1)
-    # html = html.replace('\n', '', 1)
     html = html.replace('images/', '')
     return html
 
 def makefolder():
     '''makes html folder'''
-#     html_path = os.path.join(path, '_html')
     if not os.path.exists('_html'):
         print("Making html folder")
         os.mkdir("_html")
@@ -75,7 +82,7 @@ def recursive():
         filename, ext = os.path.splitext(filename)
         html_file = os.path.join(folder, '_html', filename + '.html')
         html_content = singlecard(md_file)
-        print(html_file, html_content)
+        # print(html_file, html_content)
         writefile(html_file, html_content)
 
 def move_images():
@@ -88,7 +95,7 @@ def move_images():
     for img in imgs:
         img_folder, img_name = os.path.split(img)
         img_name, img_ext = os.path.splitext(img_name) 
-        dest = os.path.join(win_ANKI_PATH, current_time+ img_name + img_ext)
+        dest = os.path.join(anki_path, current_time+ img_name + img_ext)
         shutil.copy(img, dest)
         # print(img, dest)
 
@@ -104,7 +111,7 @@ def deleteline():
 
 def main():
     makefolder()
-    recursive(path)
+    recursive()
     move_images()
 
 if __name__ == '__main__':

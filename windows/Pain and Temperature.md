@@ -6,7 +6,7 @@
 
 - pain: not a needle, just a pin prick
 - temperature: not usually tested
-- crude touch: not discriminative. You just know something's happening; also itch, tickle, etc.
+- crude touch: not discriminative. ==You just know something's== happening; also itch, tickle, etc.
 - spinal level: slang for lowest dermatome level where pinprick is still intact. E.g. sensory lvl of T6 has sensation intact down to T6 but not below
 
 {{1st order afferents, 2nd order neurons, 3 distinct tracts for ALS. How is it different from DCML}}
