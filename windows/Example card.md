@@ -1,5 +1,5 @@
 ---
-typora-copy-images-to: images
+
 ---
 
 {{back pain alarming symptoms}}
