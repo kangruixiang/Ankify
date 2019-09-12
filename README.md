@@ -1,8 +1,5 @@
----
-typora-copy-images-to: image
----
-
 # Ankify
+
 Ankify notes into anki cards.
 
 # Todo
