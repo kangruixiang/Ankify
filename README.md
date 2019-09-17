@@ -19,7 +19,13 @@ This is the final result card:
 # Workflow and Installations
 
 - Please watch [this video for how to use ankify]( https://www.youtube.com/watch?v=lDT2O2CfC38) in the workflow
-- Join us on [Ankify](https://www.reddit.com/r/Ankify/) for more discussions
+  - [Why I don't like powerpoint for taking notes](https://youtu.be/lDT2O2CfC38)
+  - [Alternate note taking solution](https://youtu.be/lDT2O2CfC38?t=198)
+  - [Markdown for note taking](https://youtu.be/lDT2O2CfC38?t=231)
+  - [Using Ankify](https://youtu.be/lDT2O2CfC38?t=562)
+  - [Importing into Anki](https://youtu.be/lDT2O2CfC38?t=891)
+  - [Wiki using Gitbook](https://youtu.be/lDT2O2CfC38?t=1086)
+- Join me on [Ankify](https://www.reddit.com/r/Ankify/) for more discussions
 
 
 

@@ -15,7 +15,7 @@ typora-copy-images-to: ./images
 
 ## Workup
 
-<!-- someone comes in with lower back pain, workup.. -->
+{{someone comes in with lower back pain, workup}}
 
 Someone comes in with lower back pain:
 
@@ -69,7 +69,7 @@ In the acute phase of spinal cord injury, patients can develop spinal shock and 
 
 # MSK Pain
 
-<!-- msk pain path, pt, symptoms, diagnosis, treatment  -->
+{{msk pain path, pt, symptoms, diagnosis, treatment}} 
 
 - path: muscle spasm
 - pt: young, male, heavy lifting
@@ -81,7 +81,7 @@ In the acute phase of spinal cord injury, patients can develop spinal shock and 
 
 ## Disc Herniation
 
-<!-- disc herniation path, pt, symptoms, diagnosis, treatment  -->
+{{disc herniation path, pt, symptoms, diagnosis, treatment}} 
 
 - path: nucleus pulposus pinching nerve
 - pt: 30-50 yo male, heavy lifting
@@ -93,7 +93,7 @@ In the acute phase of spinal cord injury, patients can develop spinal shock and 
 
 ## Osteophyte
 
-<!-- osteophyte path, pt, symptoms, diagnosis, treatment.. -->
+{{osteophyte path, pt, symptoms, diagnosis, treatment}} 
 
 - path: bony spur growing into canal and pinches nerve
 - pt: older male, no heavy lifting
@@ -129,4 +129,4 @@ In the acute phase of spinal cord injury, patients can develop spinal shock and 
 
 - back pain with abdominal pulsating mass: aortic aneurysm
 
-  ​
+  
