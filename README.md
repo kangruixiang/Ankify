@@ -26,7 +26,7 @@ This is the final result card:
   - [Importing into Anki](https://youtu.be/lDT2O2CfC38?t=891)
   - [Wiki using Gitbook](https://youtu.be/lDT2O2CfC38?t=1086)
 - [Ankify 0.3](https://github.com/thisispiggy/Ankify/releases/tag/0.3) 
-- Join me on [Ankify](https://www.reddit.com/r/Ankify/) for more discussions
+- Join me on [Ankify](https://www.reddit.com/r/Ankify/) if you have questions and for more discussions
 
 
 
