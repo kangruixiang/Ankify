@@ -4,7 +4,7 @@ from mistune import Renderer, InlineGrammar, InlineLexer, Markdown
 from Preference import mac_ANKI_PATH, win_ANKI_PATH, card_left, card_right, delimiter
 
 
-anki_path = win_ANKI_PATH
+anki_path = mac_ANKI_PATH
 current_time = str(datetime.datetime.now().date()) + '_' + str(datetime.datetime.now().time()).replace(':', '.') + '_'    
 
 
