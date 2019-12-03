@@ -2,7 +2,7 @@
 *.html
 /My Notes
 _ankify
-/venv
+/env
 /dist
 /build
 /.vscode
