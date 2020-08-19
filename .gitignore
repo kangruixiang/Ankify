@@ -16,3 +16,4 @@ _ankify
 /ENtoANKI/build
 /ENtoANKI/dist
 *.spec
+venv
