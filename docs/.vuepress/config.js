@@ -9,6 +9,7 @@ module.exports = {
    * Ref：https://v1.vuepress.vuejs.org/config/#description
    */
   description: description,
+  base: "/Ankify/",
 
   /**
    * Extra tags to be injected to the page HTML `<head>`
@@ -20,8 +21,8 @@ module.exports = {
     ["meta", { name: "apple-mobile-web-app-capable", content: "yes" }],
     [
       "meta",
-      { name: "apple-mobile-web-app-status-bar-style", content: "black" },
-    ],
+      { name: "apple-mobile-web-app-status-bar-style", content: "black" }
+    ]
   ],
 
   /**
@@ -38,26 +39,26 @@ module.exports = {
     nav: [
       {
         text: "Guide",
-        link: "/guide/",
+        link: "/guide/"
       },
       {
         text: "Config",
-        link: "/config/",
-      },
+        link: "/config/"
+      }
     ],
     sidebar: {
       "/guide/": [
         {
           title: "Guide",
           collapsable: true,
-          children: ["", "getting-started", "config"],
-        },
-      ],
-    },
+          children: ["", "getting-started", "config"]
+        }
+      ]
+    }
   },
 
   /**
    * Apply plugins，ref：https://v1.vuepress.vuejs.org/zh/plugin/
    */
-  plugins: ["@vuepress/plugin-back-to-top", "@vuepress/plugin-medium-zoom"],
+  plugins: ["@vuepress/plugin-back-to-top", "@vuepress/plugin-medium-zoom"]
 };
