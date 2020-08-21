@@ -4,10 +4,17 @@ const path = require("path");
 const fs = require("fs");
 const commander = require("commander");
 const glob = require("glob");
+const url = require("url");
 
 const { convertFile } = require("./lib/converter");
 const { uploadFile } = require("./lib/b2");
-const { rootDir, attachmentFolder, ankiProfile } = require("./lib/config");
+const {
+  rootDir,
+  attachmentFolder,
+  ankiProfile,
+  imgListFile,
+  b2Base
+} = require("./lib/config");
 
 // commander settings for args
 commander
@@ -21,7 +28,6 @@ commander
 let files = glob.sync(path.join(commander.path, "*.md"));
 let imgs = glob.sync(path.join(attachmentFolder, "*.{png,jpg,jpeg,gif}"));
 let imageURL = /(?<=!\[.+\]\()(?!http)(.+)(?=.)/g;
-console.log(attachmentFolder);
 
 // defines output html file
 let outputFile = path.join(
@@ -30,7 +36,7 @@ let outputFile = path.join(
   path.basename(process.cwd()) + ".html"
 );
 
-function uploadImage(imgs) {
+function uploadImage(img) {
   // upload images
   console.log("Copying images to anki profile folder");
 
@@ -78,10 +84,10 @@ try {
 console.log(imgs);
 for (let img of imgs) {
   // upload images and copies to Anki folder
-  // uploadImage(img);
+  uploadImage(img);
   // copy images to anki profile
   // fs.copyFileSync(img, path.join(ankiProfile, imgName));
-  console.log("copying to anki profile", ankiProfile);
+  // console.log("copying to anki profile", ankiProfile);
 }
 
 // convert files to html
@@ -92,6 +98,6 @@ for (let file of files) {
     console.log(e);
   }
   // replace image urls
-  // replaceImgUrl(file);
+  replaceImgUrl(file);
   console.log(`Finished converting ${file}`);
 }
