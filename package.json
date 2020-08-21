@@ -12,7 +12,11 @@
     "dotenv": "^8.2.0",
     "electron": "^9.2.0",
     "glob": "^7.1.6",
-    "showdown": "^1.9.1"
+    "rehype-stringify": "^8.0.0",
+    "remark-parse": "^8.0.3",
+    "remark-rehype": "^7.0.0",
+    "showdown": "^1.9.1",
+    "unified": "^9.1.0"
   },
   "devDependencies": {
     "vuepress": "^1.5.3"
@@ -29,7 +33,7 @@
   "author": "",
   "license": "ISC",
   "bin": {
-    "ankifynode": "./ankifynode.js"
+    "ankify": "./index.js"
   },
   "bugs": {
     "url": "https://github.com/thisispiggy/ankifynode/issues"
