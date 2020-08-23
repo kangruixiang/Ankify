@@ -1,0 +1,11 @@
+# .env
+
+ROOT_DIR="D:\Git\Ankify"
+ATTACHMENT_FOLDER="D:\Git\Ankify\images"
+ANKI_PROFILE="Anki2\User 1\collection.media"
+
+BUCKET_ID=""
+API_KEY_ID=""
+API_KEY=""
+BUCKET_NAME=""
+B2_BASE=""

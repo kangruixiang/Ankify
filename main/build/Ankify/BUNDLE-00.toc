@@ -1,3 +1,0 @@
-([('Ankify',
-   '/Users/kang/Documents/GitHub/Ankify/windows/dist/Ankify',
-   'EXECUTABLE')],)

@@ -1,19 +1,4 @@
-/_html
-*.html
-/My Notes
-_ankify
-/env
-/dist
-/build
-/.vscode
-/__pycache__
-/build
-/dist
-/mac/build
-/mac/dist
-/windows/build
-/windows/dist
-/ENtoANKI/build
-/ENtoANKI/dist
-*.spec
-venv
+node_modules
+build
+.env
+filenames.json
