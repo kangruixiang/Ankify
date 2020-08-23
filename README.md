@@ -16,6 +16,10 @@ The text within `<!--` and `-->` becomes the front of the card, while the bullet
 
 ![image-20200818214259292](images/image-20200818214259292.png)
 
+# Disclaimer
+
+I originally made Ankify to help me make make Anki cards. I am now sharing the script in hope that others would be able to benefit. However, Ankify is not the most well written script, and certain things would not work under different environment. Make sure you back up your notes before proceed. 
+
 # Todo
 
 <!-- These are future todos -->
