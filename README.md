@@ -18,7 +18,7 @@ The text within `<!--` and `-->` becomes the front of the card, while the bullet
 
 # Disclaimer
 
-I originally made Ankify to help me make make Anki cards. I am now sharing the script in hope that others would be able to benefit. However, Ankify is not the most well written script, and certain things would not work under different environment. Make sure you back up your notes before proceed. 
+I originally made Ankify to help me make make Anki cards. I am now sharing the script in hope that others would be able to benefit. However, Ankify is not the most well written script, and certain things would not work under different environment. Make sure you back up your notes before proceed.
 
 # Todo
 
@@ -63,13 +63,7 @@ Then, rename the file to `.env`.
 
  <!-- steps to run the script -->
 
-Open up command prompt and navigate to the folder with your markdown file. For example, if "D:\\Drive\\My-Notes\\" were the folder where you keep your markdown files, you would type:
-
-```
-cd "D:\\Drive\\My-Notes"
-```
-
-Then type in `ankify`and enter to run the script:
+Open up command prompt and type in `ankify`and enter to run the script:
 
 ```
 ankify
