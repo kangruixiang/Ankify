@@ -1,7 +1,7 @@
 {
   "name": "ankify",
   "version": "0.0.4",
-  "description": "> A Vuido project",
+  "description": "",
   "main": "Ankify",
   "directories": {
     "test": "tests"
@@ -10,7 +10,6 @@
     "backblaze-b2": "^1.5.0",
     "commander": "^6.0.0",
     "dotenv": "^8.2.0",
-    "electron": "^9.2.0",
     "glob": "^7.1.6",
     "rehype-stringify": "^8.0.0",
     "remark-parse": "^8.0.3",
@@ -18,17 +17,12 @@
     "showdown": "^1.9.1",
     "unified": "^9.1.0"
   },
-  "devDependencies": {
-    "vuepress": "^1.5.3"
-  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thisispiggy/ankifynode.git"
+    "url": "git+https://github.com/thisispiggy/ankify.git"
   },
   "author": "",
   "license": "ISC",
@@ -36,7 +30,7 @@
     "ankify": "./index.js"
   },
   "bugs": {
-    "url": "https://github.com/thisispiggy/ankifynode/issues"
+    "url": "https://github.com/thisispiggy/ankify/issues"
   },
-  "homepage": "https://github.com/thisispiggy/ankifynode#readme"
+  "homepage": "https://github.com/thisispiggy/ankify#readme"
 }

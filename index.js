@@ -8,6 +8,12 @@ const url = require("url");
 
 const { convertFile } = require("./lib/converter");
 const { uploadFile } = require("./lib/b2");
+const {
+  attachmentFolder,
+  ankiProfile,
+  imgListFile,
+  b2Base
+} = require("./lib/config");
 
 // commander settings for args
 commander
@@ -18,23 +24,11 @@ commander
   .option("-u, --upload", "upload images", false)
   .parse(process.argv);
 
-// loads settings
-let rawconfig = fs.readFileSync(path.join(commander.path, "config.txt"));
-let config = JSON.parse(rawconfig);
-const {
-  attachmentFolder,
-  ankiProfile,
-  imgListFile,
-  applicationKeyId,
-  applicationKey,
-  bucketId,
-  bucketName
-} = config;
-
 // sets md and image files
 let files = glob.sync(path.join(commander.path, "*.md"));
 let imgs = glob.sync(path.join(attachmentFolder, "*.{png,jpg,jpeg,gif}"));
 let imageURL = /(?<=!\[.+\]\()(?!http)(.+)(?=.)/g;
+let ankiPath = path.join(process.env.APPDATA, ankiProfile);
 
 // defines output html file
 let outputFile = path.join(
@@ -58,7 +52,7 @@ function uploadImage(img) {
 }
 
 function replaceImgUrl(inputFile) {
-  // replaces image urls in file
+  // replaces image urls in file to online url
   try {
     let fileData = fs.readFileSync(inputFile, "utf-8");
     let replacedData = fileData
@@ -88,15 +82,15 @@ try {
   console.log(e);
 }
 
-console.log(imgs);
 for (let img of imgs) {
   // upload images and copies to Anki folder
   if (commander.upload) {
     uploadImage(img);
   } else {
     // copy images to anki profile
-    // fs.copyFileSync(img, path.join(ankiProfile, imgName));
-    console.log("copying to anki profile", ankiProfile);
+    imgName = path.basename(img);
+    fs.copyFileSync(img, path.join(ankiPath, imgName));
+    console.log("Copying to anki profile:", imgName);
   }
 }
 
