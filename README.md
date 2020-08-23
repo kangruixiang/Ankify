@@ -1,7 +1,3 @@
----
-typora-copy-images-to: images
----
-
 # Introduction
 
 <!-- Idea behind Ankify -->
@@ -33,7 +29,7 @@ The text within `<!--` and `-->` becomes the front of the card, while the bullet
 
 <!-- ignore -->
 
-Ankify works great but requires a bit of a setup in the beginning. 
+Ankify works great but requires a bit of a setup in the beginning.
 
 ## Installation
 
@@ -45,7 +41,7 @@ Download or clone this repository. Then, run `npm install` to run the dependenci
 
 <!-- how to configure anki -->
 
-First, you need to tell Ankify where to look for the markdown folder, image folder, and your Anki profile location. Open up `.sample-env` in the root folder of the project. It should like this: 
+First, you need to tell Ankify where to look for the markdown folder, image folder, and your Anki profile location. Open up `.sample-env` in the root folder of the project. It should like this:
 
 ```
 ROOT_DIR="D:\Drive\Notes"
@@ -53,7 +49,7 @@ ATTACHMENT_FOLDER="D:\Drive\Notes\images"
 ANKI_PROFILE="Anki2\User 1"
 ```
 
-Replace “ROOT_DIR” with the directory of your markdown folder. Replace “ATTACHMENT_FOLDER” with your image folder. Replace “ANKI_PROFILE” with your user profile. The default profile folder for Anki is “User 1”. 
+Replace “ROOT_DIR” with the directory of your markdown folder. Replace “ATTACHMENT_FOLDER” with your image folder. Replace “ANKI_PROFILE” with your user profile. The default profile folder for Anki is “User 1”.
 
 Then, rename the file to `.env`.
 
@@ -67,7 +63,7 @@ Open up command prompt and navigate to the folder with your markdown file. For e
 cd "D:\\Drive\\My-Notes"
 ```
 
-Then type in `ankify `and enter to run the script:
+Then type in `ankify`and enter to run the script:
 
 ```
 ankify
@@ -79,7 +75,7 @@ The script does several things:
 2. makes an html folder inside your markdown folder
 3. converts all of the markdown files into one html file
 
-Note, the script does not recursively converts all of the subdirectories. 
+Note, the script does not recursively converts all of the subdirectories.
 
 ## Setting up Anki
 
@@ -97,13 +93,13 @@ Note `~` is used as the delimiter. I use this because it’s my least used symbo
 
 <!-- how to make a simple card -->
 
-In any note, make a card using html comment `<!-- -->` notation. The content inside `<!-- -->` will become the front of the anki card on rendering. The content following the comment will become the back of the card. 
+In any note, make a card using html comment `<!-- -->` notation. The content inside `<!-- -->` will become the front of the anki card on rendering. The content following the comment will become the back of the card.
 
 ![image-20200821110733970](images/image-20200821110733970.png)
 
 The best way to quickly type in the `<!-- -->` is to use a text expander. I have it set up so that `,,` corresponds to `<!--` and that `..` corresponds to `-->`.
 
-Anki uses first field to check for duplicates, which is what's inside  `<!-- -->`. If you change the text inside the comment, Anki will import a new card instead. On the other hand, if you change the content after the comment, Anki will update the card instead.
+Anki uses first field to check for duplicates, which is what's inside `<!-- -->`. If you change the text inside the comment, Anki will import a new card instead. On the other hand, if you change the content after the comment, Anki will update the card instead.
 
 Headers are ignored.
 
@@ -129,7 +125,7 @@ In fact, this current README.md is a note with Anki cards! You can use this file
 
 <!-- ignore -->
 
-Notes without any cards will be ignored. 
+Notes without any cards will be ignored.
 
 ## Multiple Cards in a Note
 
@@ -148,6 +144,3 @@ Sometimes you want to exclude parts of the note from being made into a card. I u
 ![image-20200821110140560](images/image-20200821110140560.png)
 
 This is because of first field match that Anki uses. If you have multiple ignore cards, Anki will use the last one instead of importing multiple.
-
-
-
