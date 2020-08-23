@@ -17,9 +17,6 @@
     "showdown": "^1.9.1",
     "unified": "^9.1.0"
   },
-  "devDependencies": {
-    "serialize-javascript": ">=3.1.0"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -35,5 +32,8 @@
   "bugs": {
     "url": "https://github.com/thisispiggy/ankify/issues"
   },
-  "homepage": "https://github.com/thisispiggy/ankify#readme"
+  "homepage": "https://github.com/thisispiggy/ankify#readme",
+  "devDependencies": {
+    "serialize-javascript": "^4.0.0"
+  }
 }
