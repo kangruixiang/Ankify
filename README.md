@@ -2,7 +2,9 @@
 
 <!-- Idea behind Ankify -->
 
-Ankify allows you to convert your markdown notes into Anki cards. The idea of Ankify is that your notes should form the basis for your Anki cards. Ideally, you should not have to remake your cards from your notes. Rather, you should be able to convert them into cards. Furthermore, when you update your note, there should be an easy way to update your existing cards. You do the Anki cards to help memorize the small details, but you always go back to your notes to understand the big concepts.
+The idea of Ankify is that your notes should form the basis for your Anki cards. Ideally, you should not have to remake your cards from your notes. Rather, you should be able to convert them into cards. Furthermore, when you update your note, there should be an easy way to update your existing cards. You do the Anki cards to help memorize the small details, but you always go back to your notes to understand the big concepts.
+
+Ankify allows you to do all that.
 
 <!-- quick introduction -->
 
