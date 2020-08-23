@@ -111,13 +111,13 @@ Headers are ignored.
 
 Original Ankify used `{{}}` to define the front of the card. I found this leaves the front of the card visible when rendered to html:
 
-![Group 2](images/Group 3.jpg)
+![Group 2](images/Group-3.jpg)
 
 - Left: editor mode; right: rendered mode
 
 In the current version of Anki, html comment `<-- -->` is used as card front. The front of the card disappears on rendering to html. This is especially useful when publishing notes online:
 
-![Group 2](images/Group 2.jpg)
+![Group 2](images/Group-2.jpg)
 
 - Left: editor mode; right: rendered mode showing html comments not visible
 
