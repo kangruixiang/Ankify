@@ -12,7 +12,7 @@ const {
   attachmentFolder,
   ankiProfile,
   imgListFile,
-  b2Base
+  b2Base,
 } = require("./lib/config");
 
 // commander settings for args
@@ -36,20 +36,6 @@ let outputFile = path.join(
   "_html",
   path.basename(process.cwd()) + ".html"
 );
-
-function uploadImage(img) {
-  // upload images
-  console.log("Uploading", img);
-
-  try {
-    imgName = path.basename(img);
-    uploadFile(imgName, img, imgListFile);
-
-    // console.log(ankiProfile);
-  } catch (e) {
-    console.log(e);
-  }
-}
 
 function replaceImgUrl(inputFile) {
   // replaces image urls in file to online url
@@ -84,11 +70,11 @@ try {
 
 for (let img of imgs) {
   // upload images and copies to Anki folder
+  let imgName = path.basename(img);
   if (commander.upload) {
-    uploadImage(img);
+    uploadFile(imgName, img, imgListFile);
   } else {
     // copy images to anki profile
-    imgName = path.basename(img);
     fs.copyFileSync(img, path.join(ankiPath, imgName));
     console.log("Copying to anki profile:", imgName);
   }

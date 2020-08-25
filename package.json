@@ -15,7 +15,8 @@
     "remark-parse": "^8.0.3",
     "remark-rehype": "^7.0.0",
     "showdown": "^1.9.1",
-    "unified": "^9.1.0"
+    "unified": "^9.1.0",
+    "unist-util-find": "^1.0.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
