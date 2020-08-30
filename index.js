@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+const os = require('os')
 const path = require("path");
 const fs = require("fs");
 const commander = require("commander");
@@ -26,10 +27,16 @@ commander
   .parse(process.argv);
 
 // sets md and image files
+console.log(rootDir, commander.path, attachmentFolder, ankiProfile)
+
 let files = glob.sync(path.join(commander.path, "*.md"));
 let imgs = glob.sync(path.join(attachmentFolder, "*.{png,jpg,jpeg,gif}"));
 let imageURL = /(?<=!\[.+\]\()(?!http)(.+)(?=.)/g;
-let ankiPath = path.join(process.env.APPDATA, ankiProfile);
+if (os.platform() == 'win') {
+  const ankiPath = path.join(process.env.APPDATA, ankiProfile);
+} else {
+  const ankiPath = path.join(process.env.HOME, '/Library/Application Support/', ankiProfile);
+}
 
 // defines output html file
 let outputFile = path.join(
