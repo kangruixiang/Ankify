@@ -9,6 +9,7 @@ const url = require("url");
 const { convertFile } = require("./lib/converter");
 const { uploadFile } = require("./lib/b2");
 const {
+  rootDir,
   attachmentFolder,
   ankiProfile,
   imgListFile,
@@ -20,7 +21,7 @@ commander
   .version("1.0.0", "-v, --version")
   .usage("[OPTIONS]...")
   .option("-i, --image <path>", "image path", "")
-  .option("-p, --path <path>", "markdown path", process.cwd())
+  .option("-p, --path <path>", "markdown path", rootDir)
   .option("-u, --upload", "upload images", false)
   .parse(process.argv);
 
@@ -34,7 +35,7 @@ let ankiPath = path.join(process.env.APPDATA, ankiProfile);
 let outputFile = path.join(
   commander.path,
   "_html",
-  path.basename(process.cwd()) + ".html"
+  path.basename(rootDir) + ".html"
 );
 
 function replaceImgUrl(inputFile) {
@@ -44,7 +45,7 @@ function replaceImgUrl(inputFile) {
     let replacedData = fileData
       .toString()
       .replace(imageURL, (fullResult, imagePath) => {
-        console.log(`Replacing image urls in ${inputFile}`);
+        // console.log(`Replacing image urls in ${inputFile}`);
         const baseFile = path.basename(imagePath);
         const newImagePath = url.resolve(b2Base, baseFile);
         console.log(fullResult, imagePath, newImagePath);
@@ -92,5 +93,5 @@ for (let file of files) {
     replaceImgUrl(file);
   }
 
-  console.log(`Finished converting ${file}`);
+  // console.log(`Finished converting ${file}`);
 }
