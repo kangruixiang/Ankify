@@ -52,10 +52,10 @@ First, you need to tell Ankify where to look for the markdown folder, image fold
 ```
 ROOT_DIR="D:\Drive\Notes"
 ATTACHMENT_FOLDER="D:\Drive\Notes\images"
-ANKI_PROFILE="Anki2\User 1"
+ANKI_PROFILE="Anki2\User 1\collection.media"
 ```
 
-Replace “ROOT_DIR” with the directory of your markdown folder. Replace “ATTACHMENT_FOLDER” with your image folder. Replace “ANKI_PROFILE” with your user profile. The default profile folder for Anki is “User 1”.
+Replace “ROOT_DIR” with the directory of your markdown folder. Replace “ATTACHMENT_FOLDER” with your image folder. Replace “ANKI_PROFILE” with your user profile. The default profile folder for Anki is “Anki2\User 1\collection.media”.
 
 Then, rename the file to `.env`.
 
