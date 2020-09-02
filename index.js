@@ -100,6 +100,7 @@ for (let file of files) {
   }
   // replace image urls
   if (commander.upload) {
+    console.log(file);
     replaceImgUrl(file);
   }
 
