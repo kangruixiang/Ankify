@@ -8,9 +8,7 @@ The idea of Ankify is to be able to convert notes into cards. Ideally, you would
 - convert note into cards easily
 - update existing cards on subsequent conversion
 
-The idea is that you do the Anki cards to help memorize the small details, but you always go back to your notes to understand the big concepts.
-
-Ankify allows you to do all that.
+You would do the Anki cards to help memorize the small details, but you always go back to your notes to understand the big concepts. Ankify allows you to do all that.
 
 <!-- quick introduction -->
 
@@ -30,11 +28,11 @@ I originally made Ankify to help me make make Anki cards. I am now sharing the s
 
 <!-- These are future todos -->
 
-- [ ] Add anki user profile folder
-- [ ] Make it Mac compatible
-- [ ] Add custom basic card definition
+- [ ] rewrite in remark
 - [ ] Add cloze deletion
 - [ ] User GUI
+- [ ] Add anki user profile folder
+- [x] Make it Mac compatible
 - [ ] Option to upload images
 
 # Getting Started
