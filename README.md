@@ -2,7 +2,13 @@
 
 <!-- Idea behind Ankify -->
 
-The idea of Ankify is that your notes should form the basis for your Anki cards. Ideally, you should not have to remake your cards from your notes. Rather, you should be able to convert them into cards. Furthermore, when you update your note, there should be an easy way to update your existing cards. You do the Anki cards to help memorize the small details, but you always go back to your notes to understand the big concepts.
+The idea of Ankify is to be able to convert notes into cards. Ideally, you would be able to do the following:
+
+- write notes as you normally would, with minimal amount of distraction/interruption
+- convert note into cards easily
+- update existing cards on subsequent conversion
+
+The idea is that you do the Anki cards to help memorize the small details, but you always go back to your notes to understand the big concepts.
 
 Ankify allows you to do all that.
 
