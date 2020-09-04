@@ -45,6 +45,7 @@ I originally made Ankify to help me make make Anki cards. I am now sharing the s
 
 - [x] rewrite in remark
 - [ ] Add cloze deletion
+- [ ] Add optional front/back card
 - [ ] User GUI
 - [x] Add anki user profile folder
 - [x] Make it Mac compatible
