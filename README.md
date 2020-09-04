@@ -10,13 +10,14 @@
   - [Simple Card](#Simple-Card)
   - [Notes Without a Card](#Notes-Without-a-Card)
   - [Multiple Cards in a Note](#Multiple-Cards-in-a-Note)
-  - [Exclude Contents in a Note)](#Exclude-Contents-in-a-Note)
+  - [Exclude Contents in a Note](#Exclude-Contents-in-a-Note)
+- [Caveats](#Caveats)
 
 # Introduction
 
 <!-- Idea behind Ankify -->
 
-The idea of Ankify is to be able to convert notes into cards. Ideally, you would be able to do the following:
+The idea of Ankify is to be able to convert [markdown](https://typora.io/) notes into cards. Ideally, you would be able to do the following:
 
 - write notes as you normally would, with minimal amount of distraction/interruption. In fact, this README.md is made up of anki cards that you can only see when editing
 - convert note into cards easily
@@ -44,6 +45,7 @@ I originally made Ankify to help me make make Anki cards. I am now sharing the s
 
 - [x] rewrite in remark
 - [ ] Add cloze deletion
+- [ ] Add optional front/back card
 - [ ] User GUI
 - [x] Add anki user profile folder
 - [x] Make it Mac compatible
@@ -59,13 +61,15 @@ Ankify works great but requires a bit of a setup in the beginning.
 
 <!-- how to install anki -->
 
-Download or clone this repository. Then, run `npm install` to run the dependencies. Next, run `npm link` to make the script run globally.
+First, make sure you have [npm installed](https://www.npmjs.com/get-npm).
+
+Download or clone this repository. Then, [navigate](https://www.digitalcitizen.life/command-prompt-how-use-basic-commands) to the script folder and run `npm install` to run the dependencies. Next, run `npm link` to make the script run globally.
 
 ## Setting up Configuration
 
 <!-- how to configure anki -->
 
-First, you need to tell Ankify where to look for the markdown folder, image folder, and your Anki profile location. Open up `.sample-env` in the root folder of the project. It should like this:
+First, you need to tell Ankify where to look for the markdown folder, image folder, and your Anki profile location. Open up `.sample-env` in the root folder of the project. It should look like this:
 
 ```
 ROOT_DIR="D:\Drive\Notes"
@@ -83,7 +87,7 @@ After doing all that, rename the file to `.env`.
 
  <!-- steps to run the script -->
 
-Open up command prompt and type in `ankify`and enter to run the script:
+Open up command prompt and type in `ankify` and enter to run the script:
 
 ```
 ankify
@@ -95,7 +99,7 @@ The script does several things:
 2. makes an html folder inside your markdown folder
 3. converts all of the markdown files into one html file
 
-Note, the script does not recursively converts all of the subdirectories.
+Note, the script does not recursively converts all of the subdirectories. This can be changed with a tweak in index.js if you are interested in that.
 
 ## Setting up Anki
 
@@ -117,7 +121,7 @@ In any note, make a card using html comment `<!-- -->` notation. The content ins
 
 ![image-20200821110733970](images/image-20200821110733970.png)
 
-The best way to quickly type in the `<!-- -->` is to use a text expander. I have it set up so that `,,` corresponds to `<!--` and that `..` corresponds to `-->`.
+The best way to quickly type in the `<!-- -->` is to use a [text expander](https://radreads.co/text-expander/). I have it set up so that `,,` corresponds to `<!--` and that `..` corresponds to `-->`.
 
 Anki uses first field to check for duplicates, which is what's inside `<!-- -->`. If you change the text inside the comment, Anki will import a new card instead. On the other hand, if you change the content after the comment, Anki will update the card instead.
 
@@ -164,3 +168,10 @@ Sometimes you want to exclude parts of the note from being made into a card. I u
 ![image-20200821110140560](images/image-20200821110140560.png)
 
 This is because of first field match that Anki uses. If you have multiple ignore cards, Anki will use the last one instead of importing multiple.
+
+# Caveats
+
+A few caveats to the scripts:
+
+- This script is a one way sync. If you make updates inside Anki, it will not be reflected in your notes. I normally update my note and run the script to update my anki cards
+- multi-line programming code block does not work. This seems to be a problem with html import with anki. No solution currently
