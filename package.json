@@ -7,16 +7,14 @@
     "test": "tests"
   },
   "dependencies": {
-    "backblaze-b2": "^1.5.0",
-    "commander": "^6.0.0",
     "dotenv": "^8.2.0",
     "glob": "^7.1.6",
     "rehype-stringify": "^8.0.0",
     "remark-parse": "^8.0.3",
     "remark-rehype": "^7.0.0",
-    "showdown": "^1.9.1",
     "unified": "^9.1.0",
-    "unist-util-find": "^1.0.1"
+    "unist-util-find": "^1.0.1",
+    "unist-util-remove": "^2.0.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

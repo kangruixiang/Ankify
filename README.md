@@ -1,10 +1,28 @@
+- [Introduction](#Introduction)
+- [Disclaimer](#Disclaimer)
+- [Todo](#Todo)
+- [Getting Started](#Getting-Started)
+  - [Installation](##Installation)
+  - [Setting up Configuration](##Setting-up-Configuration)
+  - [Running the Script](##Running-the-Script)
+  - [Setting up Anki](##Setting-up-Anki)
+- [Making Cards](#Making-Cards)
+  - [Simple Card](##Simple-Card)
+  - [Notes Without a Card](##Notes-Without-a-Card)
+  - [Multiple Cards in a Note](##Multiple-Cards-in-a-Note)
+  - [Exclude Contents in a Note)](##Exclude-Contents-in-a-Note)
+
 # Introduction
 
 <!-- Idea behind Ankify -->
 
-The idea of Ankify is that your notes should form the basis for your Anki cards. Ideally, you should not have to remake your cards from your notes. Rather, you should be able to convert them into cards. Furthermore, when you update your note, there should be an easy way to update your existing cards. You do the Anki cards to help memorize the small details, but you always go back to your notes to understand the big concepts.
+The idea of Ankify is to be able to convert notes into cards. Ideally, you would be able to do the following:
 
-Ankify allows you to do all that.
+- write notes as you normally would, with minimal amount of distraction/interruption. In fact, this README.md is made up of anki cards that you can only see when editing
+- convert note into cards easily
+- update existing cards on subsequent conversion
+
+You would do the Anki cards to help memorize the small details, but you always go back to your notes to understand the big concepts. Ankify allows you to do all that.
 
 <!-- quick introduction -->
 
@@ -24,11 +42,11 @@ I originally made Ankify to help me make make Anki cards. I am now sharing the s
 
 <!-- These are future todos -->
 
-- [ ] Add anki user profile folder
-- [ ] Make it Mac compatible
-- [ ] Add custom basic card definition
+- [ ] rewrite in remark
 - [ ] Add cloze deletion
 - [ ] User GUI
+- [ ] Add anki user profile folder
+- [x] Make it Mac compatible
 - [ ] Option to upload images
 
 # Getting Started
@@ -55,7 +73,7 @@ ATTACHMENT_FOLDER="D:\Drive\Notes\images"
 ANKI_PROFILE="Anki2\User 1\collection.media"
 ```
 
-Replace “ROOT_DIR” with the directory of your markdown folder. Replace “ATTACHMENT_FOLDER” with your image folder. Replace “ANKI_PROFILE” with your user profile. The default profile folder for Anki is “Anki2\User 1\collection.media”.
+Replace “ROOT_DIR” with the directory of your markdown folder. Replace “ATTACHMENT_FOLDER” with your image folder. Replace “ANKI_PROFILE” with your user profile. The default anki profile is "User 1," and the default profile folder for Anki is `Anki2\User 1\collection.media`.
 
 Then, rename the file to `.env`.
 
