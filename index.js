@@ -49,10 +49,11 @@ function deletePreviousHtml(name) {
 function copyImg(imgs) {
   for (let img of imgs) {
     // copies to Anki folder
+
     let imgName = path.basename(img);
     let dest = path.join(ankiPath, imgName);
     if (!fs.existsSync(dest)) {
-      fs.copyFileSync(img);
+      fs.copyFileSync(img, dest);
       console.log("Copying to anki profile:", imgName);
     }
   }
