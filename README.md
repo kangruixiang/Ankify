@@ -61,13 +61,15 @@ Ankify works great but requires a bit of a setup in the beginning.
 
 <!-- how to install anki -->
 
-Download or clone this repository. Then, run `npm install` to run the dependencies. Next, run `npm link` to make the script run globally.
+First, make sure you have [npm installed](https://www.npmjs.com/get-npm).
+
+Download or clone this repository. Then, [navigate](https://www.digitalcitizen.life/command-prompt-how-use-basic-commands) to the script folder and run `npm install` to run the dependencies. Next, run `npm link` to make the script run globally.
 
 ## Setting up Configuration
 
 <!-- how to configure anki -->
 
-First, you need to tell Ankify where to look for the markdown folder, image folder, and your Anki profile location. Open up `.sample-env` in the root folder of the project. It should like this:
+First, you need to tell Ankify where to look for the markdown folder, image folder, and your Anki profile location. Open up `.sample-env` in the root folder of the project. It should look like this:
 
 ```
 ROOT_DIR="D:\Drive\Notes"
@@ -85,7 +87,7 @@ After doing all that, rename the file to `.env`.
 
  <!-- steps to run the script -->
 
-Open up command prompt and type in `ankify`and enter to run the script:
+Open up command prompt and type in `ankify` and enter to run the script:
 
 ```
 ankify
