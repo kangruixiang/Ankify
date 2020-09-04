@@ -3,34 +3,25 @@
 const os = require("os");
 const path = require("path");
 const fs = require("fs");
-const commander = require("commander");
 const glob = require("glob");
-const url = require("url");
 
-const { convertFile } = require("./lib/converter");
-const { uploadFile } = require("./lib/b2");
+const processor_1 = require("./lib/processor");
 const {
   rootDir,
   attachmentFolder,
   ankiProfile,
-  imgListFile,
-  b2Base,
+  cardLeft,
+  cardRight,
+  delimiter,
 } = require("./lib/config");
 
-// commander settings for args
-commander
-  .version("1.0.0", "-v, --version")
-  .usage("[OPTIONS]...")
-  .option("-i, --image <path>", "image path", "")
-  .option("-p, --path <path>", "markdown path", rootDir)
-  .option("-u, --upload", "upload images", false)
-  .parse(process.argv);
+// sets cards left and right, output file name
+const cardLeft_1 = new RegExp(cardLeft, "g");
+const cardRight_1 = new RegExp(cardRight, "g");
+const outputFile = path.join(rootDir, "_html", "ankify.html");
+const imgs = glob.sync(path.join(attachmentFolder, "*.{png,jpg,jpeg,gif}"));
 
-// sets md and image files
-
-let files = glob.sync(path.join(commander.path, "*.md"));
-let imgs = glob.sync(path.join(attachmentFolder, "*.{png,jpg,jpeg,gif}"));
-let imageURL = /(?<=!\[.+\]\()(?!http)(.+)(?=.)/g;
+// sets anki path based on system
 if (os.platform() === "win32") {
   var ankiPath = path.join(process.env.APPDATA, ankiProfile);
 } else {
@@ -41,67 +32,62 @@ if (os.platform() === "win32") {
   );
 }
 
-// defines output html file
-let outputFile = path.join(
-  commander.path,
-  "_html",
-  path.basename(rootDir) + ".html"
-);
+function createDir(name) {
+  if (!fs.existsSync(path.join(rootDir, name))) {
+    fs.mkdirSync(path.join(rootDir, name));
+  }
+}
 
-function replaceImgUrl(inputFile) {
-  // replaces image urls in file to online url
+function deletePreviousHtml(name) {
   try {
-    let fileData = fs.readFileSync(inputFile, "utf-8");
-    let replacedData = fileData
-      .toString()
-      .replace(imageURL, (fullResult, imagePath) => {
-        // console.log(`Replacing image urls in ${inputFile}`);
-        const baseFile = path.basename(imagePath);
-        const newImagePath = url.resolve(b2Base, baseFile);
-        console.log(fullResult, imagePath, newImagePath);
-        return `${newImagePath}`;
-      });
-    fs.writeFileSync(inputFile, replacedData);
-  } catch (error) {
-    console.log(error);
+    fs.unlinkSync(name);
+  } catch (err) {
+    if (err.code !== "ENOENT") throw err;
   }
 }
 
-// makes html folder
-if (!fs.existsSync(path.join(commander.path, "_html"))) {
-  fs.mkdirSync(path.join(commander.path, "_html"));
-}
+function copyImg(imgs) {
+  for (let img of imgs) {
+    // copies to Anki folder
 
-// deletes previous html file
-try {
-  fs.unlinkSync(outputFile);
-} catch (e) {
-  console.log(e);
-}
-
-for (let img of imgs) {
-  // upload images and copies to Anki folder
-  let imgName = path.basename(img);
-  if (commander.upload) {
-    uploadFile(imgName, img, imgListFile);
-  } else {
-    // copy images to anki profile
-    fs.copyFileSync(img, path.join(ankiPath, imgName));
-    console.log("Copying to anki profile:", imgName);
+    let imgName = path.basename(img);
+    let dest = path.join(ankiPath, imgName);
+    if (!fs.existsSync(dest)) {
+      fs.copyFileSync(img, dest);
+      console.log("Copying to anki profile:", imgName);
+    }
   }
 }
 
-// convert files to html
-for (let file of files) {
-  try {
-    convertFile(file, outputFile);
-  } catch (e) {
-    console.log(e);
-  }
-  // replace image urls
-  if (commander.upload) {
-    replaceImgUrl(file);
-  }
-
-  // console.log(`Finished converting ${file}`);
+function defaultMD(fileData) {
+  let content = processor_1.default().process(fileData);
+  return content;
 }
+
+async function main(mainFunc) {
+  let files = glob.sync(path.resolve(rootDir, "*.md"));
+  for (let file of files) {
+    console.log("Converting:", file);
+    try {
+      let fileData = fs.readFileSync(file, "utf-8");
+      let content = await mainFunc(fileData);
+
+      let firstCard = "<!-- ignore -->";
+      content = firstCard + content;
+      content = content.replace(/~/g, ""); // cleans delimiter
+      content = content.replace(/\n/g, ""); // replaces linebreak
+      content = content.replace(/&#x3C;/g, "<"); // replaces left html comment
+      content = content.replace(cardLeft_1, "\n"); // replaces cardleft
+      content = content.replace(cardRight_1, delimiter); // replaces cardright
+      fs.appendFileSync(outputFile, content);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  console.log("Creating Anki card");
+}
+
+createDir("_html");
+deletePreviousHtml(outputFile);
+copyImg(imgs);
+main(defaultMD);
