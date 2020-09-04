@@ -121,7 +121,7 @@ In any note, make a card using html comment `<!-- -->` notation. The content ins
 
 ![image-20200821110733970](images/image-20200821110733970.png)
 
-The best way to quickly type in the `<!-- -->` is to use a text expander. I have it set up so that `,,` corresponds to `<!--` and that `..` corresponds to `-->`.
+The best way to quickly type in the `<!-- -->` is to use a [text expander](https://radreads.co/text-expander/). I have it set up so that `,,` corresponds to `<!--` and that `..` corresponds to `-->`.
 
 Anki uses first field to check for duplicates, which is what's inside `<!-- -->`. If you change the text inside the comment, Anki will import a new card instead. On the other hand, if you change the content after the comment, Anki will update the card instead.
 
