@@ -17,7 +17,7 @@
 
 <!-- Idea behind Ankify -->
 
-The idea of Ankify is to be able to convert notes into cards. Ideally, you would be able to do the following:
+The idea of Ankify is to be able to convert [markdown](https://typora.io/) notes into cards. Ideally, you would be able to do the following:
 
 - write notes as you normally would, with minimal amount of distraction/interruption. In fact, this README.md is made up of anki cards that you can only see when editing
 - convert note into cards easily
