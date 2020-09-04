@@ -10,8 +10,8 @@
   - [Simple Card](#Simple-Card)
   - [Notes Without a Card](#Notes-Without-a-Card)
   - [Multiple Cards in a Note](#Multiple-Cards-in-a-Note)
-  - [Exclude Contents in a Note)](#Exclude-Contents-in-a-Note)
-- [Caveats)](#Caveats)
+  - [Exclude Contents in a Note](#Exclude-Contents-in-a-Note)
+- [Caveats](#Caveats)
 
 # Introduction
 
