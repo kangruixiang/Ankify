@@ -11,6 +11,7 @@
   - [Notes Without a Card](#Notes-Without-a-Card)
   - [Multiple Cards in a Note](#Multiple-Cards-in-a-Note)
   - [Exclude Contents in a Note)](#Exclude-Contents-in-a-Note)
+- [Caveats)](#Caveats)
 
 # Introduction
 
@@ -164,3 +165,10 @@ Sometimes you want to exclude parts of the note from being made into a card. I u
 ![image-20200821110140560](images/image-20200821110140560.png)
 
 This is because of first field match that Anki uses. If you have multiple ignore cards, Anki will use the last one instead of importing multiple.
+
+# Caveats
+
+A few caveats to the scripts:
+
+- This script is a one way sync. If you make updates inside Anki, it will not be reflected in your notes. I normally update my note and run the script to update my anki cards
+- multi-line programming code block does not work. This seems to be a problem with html import with anki. No solution currently
