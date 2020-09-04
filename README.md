@@ -42,10 +42,10 @@ I originally made Ankify to help me make make Anki cards. I am now sharing the s
 
 <!-- These are future todos -->
 
-- [ ] rewrite in remark
+- [x] rewrite in remark
 - [ ] Add cloze deletion
 - [ ] User GUI
-- [ ] Add anki user profile folder
+- [x] Add anki user profile folder
 - [x] Make it Mac compatible
 - [ ] Option to upload images
 
