@@ -2,15 +2,15 @@
 - [Disclaimer](#Disclaimer)
 - [Todo](#Todo)
 - [Getting Started](#Getting-Started)
-  - [Installation](#Installation)
-  - [Setting up Configuration](#Setting-up-Configuration)
-  - [Running the Script](#Running-the-Script)
-  - [Setting up Anki](#Setting-up-Anki)
+  - [Installation](##Installation)
+  - [Setting up Configuration](##Setting-up-Configuration)
+  - [Running the Script](##Running-the-Script)
+  - [Setting up Anki](##Setting-up-Anki)
 - [Making Cards](#Making-Cards)
-  - [Simple Card](#Simple-Card)
-  - [Notes Without a Card](#Notes-Without-a-Card)
-  - [Multiple Cards in a Note](#Multiple-Cards-in-a-Note)
-  - [Exclude Contents in a Note)](#Exclude-Contents-in-a-Note)
+  - [Simple Card](##Simple-Card)
+  - [Notes Without a Card](##Notes-Without-a-Card)
+  - [Multiple Cards in a Note](##Multiple-Cards-in-a-Note)
+  - [Exclude Contents in a Note)](##Exclude-Contents-in-a-Note)
 
 # Introduction
 
