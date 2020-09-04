@@ -95,7 +95,7 @@ The script does several things:
 2. makes an html folder inside your markdown folder
 3. converts all of the markdown files into one html file
 
-Note, the script does not recursively converts all of the subdirectories.
+Note, the script does not recursively converts all of the subdirectories. This can be changed with a tweak in index.js if you are interested in that.
 
 ## Setting up Anki
 
