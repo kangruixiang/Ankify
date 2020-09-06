@@ -65,7 +65,7 @@ function defaultMD(fileData) {
 }
 
 async function main(mainFunc) {
-  let files = glob.sync(path.resolve(rootDir, "*.md"));
+  let files = glob.sync(path.resolve(rootDir, "**", "*.md"));
   for (let file of files) {
     console.log("Converting:", file);
     try {
