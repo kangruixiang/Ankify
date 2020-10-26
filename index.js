@@ -20,6 +20,12 @@ const cardLeft_1 = new RegExp(cardLeft, "g");
 const cardRight_1 = new RegExp(cardRight, "g");
 const outputFile = path.join(rootDir, "_html", "ankify.html");
 const imgs = glob.sync(path.join(attachmentFolder, "*.{png,jpg,jpeg,gif}"));
+const args = process.argv;
+if (args[2] == "-r") {
+  var filepath = path.resolve(rootDir, "**", "*.md");
+} else {
+  var filepath = path.resolve(rootDir, "*.md");
+}
 
 // sets anki path based on system
 if (os.platform() === "win32") {
@@ -65,13 +71,12 @@ function defaultMD(fileData) {
 }
 
 async function main(mainFunc) {
-  let files = glob.sync(path.resolve(rootDir, "**", "*.md"));
+  let files = glob.sync(filepath);
   for (let file of files) {
     console.log("Converting:", file);
     try {
       let fileData = fs.readFileSync(file, "utf-8");
       let content = await mainFunc(fileData);
-
       let firstCard = "<!-- ignore -->";
       content = firstCard + content;
       content = content.replace(/~/g, ""); // cleans delimiter
