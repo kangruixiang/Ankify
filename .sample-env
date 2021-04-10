@@ -1,9 +1,0 @@
-# .env
-
-ROOT_DIR="D:\Git\Ankify"
-ATTACHMENT_FOLDER="D:\Git\Ankify\images"
-ANKI_PROFILE="Anki2\User 1\collection.media"
-
-CARD_LEFT="<!--"
-CARD_RIGHT="-->"
-DELIMITER="~"

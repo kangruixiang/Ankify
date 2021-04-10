@@ -10,6 +10,7 @@ const {
   rootDir,
   attachmentFolder,
   ankiProfile,
+  vaultName,
   cardLeft,
   cardRight,
   delimiter,
@@ -18,7 +19,8 @@ const {
 // sets cards left and right, output file name
 const cardLeft_1 = new RegExp(cardLeft, "g");
 const cardRight_1 = new RegExp(cardRight, "g");
-const outputFile = path.join(rootDir, "_html", "ankify.html");
+const outputFile = path.join(rootDir, "_html", "card.html");
+const outputNote = path.join(rootDir, "_html", "note.html")
 const imgs = glob.sync(path.join(attachmentFolder, "*.{png,jpg,jpeg,gif}"));
 const args = process.argv;
 if (args[2] == "-r") {
@@ -71,28 +73,48 @@ function defaultMD(fileData) {
 }
 
 async function main(mainFunc) {
-  let files = glob.sync(filepath);
+  console.log(filepath)
+  let files = glob.sync(rootDir + '**/*.md', { ignore: [rootDir + '**/01 Step 1/**/*.md', rootDir + '**/02 Step 2/**/*.md'] });
   for (let file of files) {
     console.log("Converting:", file);
+    let fileData = fs.readFileSync(file, "utf-8"); // reads the note content
+    let content = await mainFunc(fileData);  // parses content through remark
+    let title = path.parse(path.basename(file)).name // title of file
+    let source = file.replace(rootDir, `obsidian://open?vault=${vaultName}&file=`) // obsidian url of file
+    source = `<a href="${source}">source</a>`
     try {
-      let fileData = fs.readFileSync(file, "utf-8");
-      let content = await mainFunc(fileData);
+      // adds incremental reading style
+      note = "" + content
+      let cardStyle = note.includes("&#x3C;!--")
+      if (!cardStyle) {
+        note = note.replace(/~/g, "");
+        note = note.replace(/\n/g, "");
+        note = title + delimiter + source + delimiter + note + '\n'
+        fs.appendFileSync(outputNote, note)
+      }
+    } catch (e) {
+      console.log(e);
+    }
+    try {
       let firstCard = "<!-- ignore -->";
       content = firstCard + content;
       content = content.replace(/~/g, ""); // cleans delimiter
       content = content.replace(/\n/g, ""); // replaces linebreak
       content = content.replace(/&#x3C;/g, "<"); // replaces left html comment
       content = content.replace(cardLeft_1, "\n"); // replaces cardleft
-      content = content.replace(cardRight_1, delimiter); // replaces cardright
+      content = content.replace(cardRight_1, delimiter + source + delimiter); // replaces cardright
       fs.appendFileSync(outputFile, content);
     } catch (e) {
       console.log(e);
     }
+
+
   }
   console.log("Creating Anki card");
 }
 
 createDir("_html");
 deletePreviousHtml(outputFile);
-copyImg(imgs);
+deletePreviousHtml(outputNote);
+// copyImg(imgs);
 main(defaultMD);
