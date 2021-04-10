@@ -20,7 +20,7 @@ const {
 const cardLeft_1 = new RegExp(cardLeft, "g");
 const cardRight_1 = new RegExp(cardRight, "g");
 const outputFile = path.join(rootDir, "_html", "card.html");
-const outputNote = path.join(rootDir, "_html", "note.html")
+const outputNote = path.join(rootDir, "_html", "note.html");
 const imgs = glob.sync(path.join(attachmentFolder, "*.{png,jpg,jpeg,gif}"));
 const args = process.argv;
 if (args[2] == "-r") {
@@ -73,24 +73,32 @@ function defaultMD(fileData) {
 }
 
 async function main(mainFunc) {
-  console.log(filepath)
-  let files = glob.sync(rootDir + '**/*.md', { ignore: [rootDir + '**/01 Step 1/**/*.md', rootDir + '**/02 Step 2/**/*.md'] });
+  console.log(filepath);
+  let files = glob.sync(rootDir + "**\\*.md", {
+    ignore: [
+      rootDir + "**\\01 Step 1\\**\\*.md",
+      rootDir + "**\\02 Step 2\\**\\*.md",
+    ],
+  });
   for (let file of files) {
     console.log("Converting:", file);
     let fileData = fs.readFileSync(file, "utf-8"); // reads the note content
-    let content = await mainFunc(fileData);  // parses content through remark
-    let title = path.parse(path.basename(file)).name // title of file
-    let source = file.replace(rootDir, `obsidian://open?vault=${vaultName}&file=`) // obsidian url of file
-    source = `<a href="${source}">source</a>`
+    let content = await mainFunc(fileData); // parses content through remark
+    let title = path.parse(path.basename(file)).name; // title of file
+    let source = file.replace(
+      rootDir,
+      `obsidian://open?vault=${vaultName}&file=`
+    ); // obsidian url of file
+    source = `<a href="${source}">source</a>`;
     try {
       // adds incremental reading style
-      note = "" + content
-      let cardStyle = note.includes("&#x3C;!--")
+      note = "" + content;
+      let cardStyle = note.includes("&#x3C;!--");
       if (!cardStyle) {
         note = note.replace(/~/g, "");
         note = note.replace(/\n/g, "");
-        note = title + delimiter + source + delimiter + note + '\n'
-        fs.appendFileSync(outputNote, note)
+        note = title + delimiter + source + delimiter + note + "\n";
+        fs.appendFileSync(outputNote, note);
       }
     } catch (e) {
       console.log(e);
@@ -107,8 +115,6 @@ async function main(mainFunc) {
     } catch (e) {
       console.log(e);
     }
-
-
   }
   console.log("Creating Anki card");
 }
