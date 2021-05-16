@@ -73,11 +73,11 @@ function defaultMD(fileData) {
 }
 
 async function main(mainFunc) {
-  console.log(filepath);
-  let files = glob.sync(rootDir + "**\\*.md", {
+  // console.log(filepath);
+  let files = glob.sync(rootDir + "**/*.md", {
     ignore: [
-      rootDir + "**\\01 Step 1\\**\\*.md",
-      rootDir + "**\\02 Step 2\\**\\*.md",
+      rootDir + "**/01 Step 1/**/*.md",
+      rootDir + "**/02 Step 2/**/*.md",
     ],
   });
   for (let file of files) {
@@ -85,6 +85,7 @@ async function main(mainFunc) {
     let fileData = fs.readFileSync(file, "utf-8"); // reads the note content
     let content = await mainFunc(fileData); // parses content through remark
     let title = path.parse(path.basename(file)).name; // title of file
+    let tag = path.parse(file).dir.split("/").pop();
     let source = file.replace(
       rootDir,
       `obsidian://open?vault=${vaultName}&file=`
@@ -97,7 +98,15 @@ async function main(mainFunc) {
       if (!cardStyle) {
         note = note.replace(/~/g, "");
         note = note.replace(/\n/g, "");
-        note = title + delimiter + source + delimiter + note + "\n";
+        note =
+          title +
+          delimiter +
+          source +
+          delimiter +
+          note +
+          delimiter +
+          tag +
+          "\n";
         fs.appendFileSync(outputNote, note);
       }
     } catch (e) {
@@ -110,7 +119,10 @@ async function main(mainFunc) {
       content = content.replace(/\n/g, ""); // replaces linebreak
       content = content.replace(/&#x3C;/g, "<"); // replaces left html comment
       content = content.replace(cardLeft_1, "\n"); // replaces cardleft
-      content = content.replace(cardRight_1, delimiter + source + delimiter); // replaces cardright
+      content = content.replace(
+        cardRight_1,
+        delimiter + source + delimiter + tag + delimiter
+      ); // replaces cardright
       fs.appendFileSync(outputFile, content);
     } catch (e) {
       console.log(e);
