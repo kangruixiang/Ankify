@@ -8,5 +8,6 @@ Before with markdown:
 Ankify:
 ![](./images/convertBlank.png)
 
-After import:
+After importing:
+
 ![](./images/after.png)
