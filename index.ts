@@ -14,20 +14,21 @@ program
 program
     .option('-l, --listProfiles', 'list found Anki user profiles', false)
     .option('-u, --profile <USERNAME>', 'use Anki user profile')
-    .option('-p, --path <MDPATH>', 'path of markdown files to convert')
+    .option('-p, --MDPath <MDPATH>', 'path of markdown files to convert')
     .option('-i, --imagePath <IMAGEPATH>', 'path of images to copy')
     .option('-d, --delimiter <DELIMITER>', 'delimiter to use to separate cards', '\t')
     .option('--cardLeft <LEFT>', 'defines left side of card', '<!--')
     .option('--cardRight <RIGHT>', 'defines right side of card', '-->')
     .option('-w, --clozeWrap <CLOZE>', 'defines cloze wrap option', '==')
-    .option('-c, --convert', 'triggers conversion', false)
+    .option('-c, --convert', 'triggers conversion', true)
 
 if (!process.argv.slice(2).length) {
     program.help(); // print help if no argument is listed
 }
 
 program.parse()
-const { listProfiles, profileName, delimiter, cardLeft, cardRight, clozeWrap, imagePath, MDPath, convert } = program.opts()
+const { listProfiles, profileName, delimiter, cardLeft, cardRight, clozeWrap, imagePath, MDPath } = program.opts()
+let { convert } = program.opts()
 
 const ankiPath = getAnkiPath()
 const ankiUserPath = await getAnkiUserPath(ankiPath)
@@ -75,6 +76,7 @@ async function mainFunc() {
 
 if (listProfiles) {
     console.log('Found anki users:', ankiUserPath)
+    convert = false
 }
 
 if (convert) {
