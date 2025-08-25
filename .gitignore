@@ -3,3 +3,4 @@ build
 .env
 filenames.json
 _html/
+test/_txt/
