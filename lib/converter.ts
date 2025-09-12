@@ -25,6 +25,7 @@ export class AnkiCard {
     highlightBorder: string;
     tags: string
     cards: Card[]
+    HTMLContent: string
 
 
     constructor(MDContent: string, delimiter: string, cardLeft: string, cardRight: string, highlightBorder: string, tags: string) {
@@ -35,6 +36,7 @@ export class AnkiCard {
         this.highlightBorder = highlightBorder
         this.tags = tags
         this.cards = []
+        this.HTMLContent = ''
     }
 
     /**
@@ -132,6 +134,7 @@ export class AnkiCard {
                 card.HTMLContent = ''
                 continue
             }
+            console.log(card.HTMLContent)
             card.HTMLContent = card.HTMLContent.replace(/\n/g, '').replace(/\t/g, '')
         }
     }
